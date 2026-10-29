@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{url}}/facultades/create"
+method: POST
+body:
+  type: json
+  content: "{\n    \"nombre\": \"Facultad de Derecho\"\n}"
+order: 3000

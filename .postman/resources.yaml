@@ -1,0 +1,12 @@
+workspace:
+  id: 3158f2a3-ed76-4801-86ed-b8667afdfb31
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  globals:
+    ../postman/globals/workspace.globals.yaml: 8cb7a89c-a8eb-4c0d-83b1-45c244183ede
+  collections:
+    ../postman/collections/Api admitidos 2026-2: 58661685-893a8cbd-dcd2-4318-bef2-189a37acb04f
+  environments:
+    ../postman/environments/Api-admitidos-2026-2.environment.yaml: 58661685-3740b005-e1a5-4638-bba0-60b858364cb0

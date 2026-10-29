@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{url}}/programas/store"
+method: POST
+body:
+  type: json
+  content: "{\n    \"facultadId\": 1,\n    \"name\": \"Tecnología en Desarrollo de Software\",\n    \"nivel\": \"pregrado\"\n}"
+order: 2000

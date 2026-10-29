@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{url}}/facultades/update/1"
+method: PUT
+body:
+  type: json
+  content: "{\n    \"nombre\": \"Facultad de Ingeniería y Ciencias Básicas\"\n}"
+order: 4000
