@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{url}}/programas/info/6aec90f6a3038e4228b73c5b"
+method: GET
+order: 2000

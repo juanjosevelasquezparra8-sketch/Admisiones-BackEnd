@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{url}}/programas/update/6aec90f6a3038e4228b73c5b"
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+    "codigo": "TDS",
+    "nombre": "Tecnología en Desarrollo de Software Virtual",
+    "nivel": "pregrado",
+    "facultad": "6aec9030a3038e4228b73c5a"
+    }
+order: 4000

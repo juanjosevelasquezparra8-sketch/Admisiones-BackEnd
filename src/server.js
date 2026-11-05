@@ -1,5 +1,5 @@
 import app from "./app.js";
-import db from "./config/database.js";
+import { connectDB } from "./config/database.js";
 
 
 const PORT = Number(process.env.PORT);
@@ -9,7 +9,7 @@ const APP_NAME = process.env.APP_NAME;
 
 async function startServer() {
     try {
-        await db.execute("SELECT 1"); /* Verifica la conexión a la base de datos */
+        await connectDB(); /* nos conectamos a MongoDB */
         console.log("Base de datos conectada correctamente");
 
         app.listen(PORT, HOST, () => {

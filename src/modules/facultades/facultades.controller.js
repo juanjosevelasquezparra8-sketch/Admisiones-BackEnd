@@ -1,3 +1,6 @@
+import mongoose from 'mongoose';
+import Facultad from './facultades.model.js';
+
 import * as FacultadesService from './facultades.service.js';
 
 export async function listarFacultades(req, res) {
@@ -20,9 +23,9 @@ export async function listarFacultades(req, res) {
 }
 
 export async function obtenerFacultadPorId(req, res) {
-    const id = Number(req.params.id);
+    const id = req.params.id;
     try {
-        if (!Number.isInteger(id) || id <= 0) {
+        if (!mongoose.Types.ObjectId.isValid(id)) { /* revisa que el id tenga formato de Mongo */
             return res.status(400).json({
                 statusCode: 400,
                 success: false,
@@ -99,11 +102,11 @@ export async function crearFacultad(req, res) {
 export async function actualizarFacultad(req, res) {
 
     try {
-        const id = Number(req.params.id);
+        const id = req.params.id; /* en Mongo el id es un texto, no un numero */
         const { nombre } = req.body;
         /* Validaciones ID */
 
-        if (!Number.isInteger(id) || id <= 0) {
+        if (!mongoose.Types.ObjectId.isValid(id)) { /* revisa que el id tenga formato de Mongo */
             return res.status(400).json({
                 statusCode: 400,
                 success: false,
@@ -157,11 +160,11 @@ export async function actualizarFacultad(req, res) {
 export async function eliminarFacultad(req, res) {
 
     try {
-        const id = Number(req.params.id);
+        const id = req.params.id; /* en Mongo el id es un texto, no un numero */
 
         /* Validaciones ID */
 
-        if (!Number.isInteger(id) || id <= 0) {
+        if (!mongoose.Types.ObjectId.isValid(id)) { /* revisa que el id tenga formato de Mongo */
             return res.status(400).json({
                 statusCode: 400,
                 success: false,

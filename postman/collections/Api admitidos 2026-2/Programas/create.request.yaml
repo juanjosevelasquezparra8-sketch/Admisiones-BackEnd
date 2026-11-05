@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{url}}/programas/create"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "codigo": "TDS",
+        "nombre": "Tecnología en Desarrollo de Software",
+        "nivel": "pregrado",
+        "facultad": "6aec9003a3038e4228b73c59"
+    }
+order: 3000

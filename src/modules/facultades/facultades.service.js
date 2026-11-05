@@ -1,45 +1,27 @@
-import db from "../../config/database.js";
+import Facultad from "./facultades.model.js";
 
-export async function listarFacultades() {
-    const [rows] = await db.execute(`SELECT
-                                          id,
-                                          nombre,
-                                          created_at AS createdAt,
-                                          updated_at AS updatedAt
-                                          FROM facultades
-                                          ORDER BY nombre ASC`);
-    return rows;
+export async function listarFacultades() { 
+    return await Facultad.find().sort({ nombre: 1 }); /* Ordena por nombre de forma ascendente */
 }
 
 export async function obtenerFacultadPorId(id) {
-    const [rows] = await db.execute(`SELECT
-                                          id,
-                                          nombre,
-                                          created_at AS createdAt,
-                                          updated_at AS updatedAt
-                                          FROM facultades
-                                          WHERE id = ?`, [id]);
-    return rows[0];
+    return await Facultad.findById(id);
 }
 
 export async function crearFacultad(nombre) {
-    const [result] = await db.execute(`INSERT INTO facultades (nombre) 
-                                       VALUES (?)`, [nombre]);
-
-    return result.insertId;
+    return await Facultad.create({ nombre });
 }
 
 
 export async function actualizarFacultad(id, nombre) {
-    await db.execute(`UPDATE facultades SET nombre = ? WHERE id = ?`, [nombre, id]);
-
-    return obtenerFacultadPorId(id);
+    return await Facultad.findByIdAndUpdate(
+        id, 
+        { nombre }, 
+        { returnDocument: "after", runValidators: true }
+    );
 }
 
 export async function eliminarFacultad(id) {
-    const [result] = await db.execute(`DELETE FROM facultades WHERE id = ?`, [id]);
-
-    return (
-        result.affectedRows > 0  /* Devuelve el número de filas afectadas */
-    );
+    const eliminada = await Facultad.findByIdAndDelete(id);
+    return eliminada !== null; /* Devuelve true si se eliminó, false si no se encontró */
 }

@@ -1,4 +1,4 @@
 $kind: http-request
-url: "{{url}}/facultades/info/1"
+url: "{{url}}/facultades/info/6aec8d333f9faea3a6cf4ead"
 method: GET
 order: 2000

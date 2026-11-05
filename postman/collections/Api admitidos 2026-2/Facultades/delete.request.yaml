@@ -1,4 +1,4 @@
 $kind: http-request
-url: "{{url}}/facultades/delete/5"
+url: "{{url}}/facultades/delete/6aec8d333f9faea3a6cf4ead"
 method: DELETE
 order: 5000

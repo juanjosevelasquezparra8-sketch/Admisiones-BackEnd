@@ -1,44 +1,37 @@
-import db from "../../config/database.js";
+import Programa from "./programas.model.js";
 
 export async function listarProgramas() {
-    const [rows] = await db.execute(`SELECT *
-                                          FROM programas
-                                          ORDER BY nombre ASC`);
-    return rows;
+    /* populate trae el nombre de la facultad en vez de solo su _id */
+    return await Programa.find().populate("facultad", "nombre").sort({ nombre: 1 });
 }
 
-
-
-
-export async function obtenerFacultadPorId(id) {
-    const [rows] = await db.execute(`SELECT
-                                          id,
-                                          nombre,
-                                          created_at AS createdAt,
-                                          updated_at AS updatedAt
-                                          FROM facultades
-                                          WHERE id = ?`, [id]);
-    return rows[0];
+export async function obtenerProgramaPorId(id) {
+    return await Programa.findById(id).populate("facultad", "nombre");
 }
 
-export async function crearFacultad(nombre) {
-    const [result] = await db.execute(`INSERT INTO facultades (nombre) 
-                                       VALUES (?)`, [nombre]);
-
-    return result.insertId;
+/* busca si ya hay un programa con ese nombre en la misma facultad */
+export async function buscarProgramaPorNombre(nombre, facultad) {
+    return await Programa.findOne({ nombre: nombre.trim(), facultad });
 }
 
-
-export async function actualizarFacultad(id, nombre) {
-    await db.execute(`UPDATE facultades SET nombre = ? WHERE id = ?`, [nombre, id]);
-
-    return obtenerFacultadPorId(id);
+/* busca si ya hay un programa con ese codigo */
+export async function buscarProgramaPorCodigo(codigo) {
+    return await Programa.findOne({ codigo: codigo.trim().toUpperCase() });
 }
 
-export async function eliminarFacultad(id) {
-    const [result] = await db.execute(`DELETE FROM facultades WHERE id = ?`, [id]);
+export async function crearPrograma(datos) {
+    return await Programa.create(datos);
+}
 
-    return (
-        result.affectedRows > 0  /* Devuelve el número de filas afectadas */
-    );
+export async function actualizarPrograma(id, datos) {
+    return await Programa.findByIdAndUpdate(
+        id,
+        datos,
+        { returnDocument: "after", runValidators: true }
+    ).populate("facultad", "nombre");
+}
+
+export async function eliminarPrograma(id) {
+    const eliminado = await Programa.findByIdAndDelete(id);
+    return eliminado !== null; /* Devuelve true si se eliminó, false si no se encontró */
 }

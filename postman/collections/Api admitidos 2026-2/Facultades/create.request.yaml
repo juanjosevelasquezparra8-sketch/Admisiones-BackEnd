@@ -3,5 +3,8 @@ url: "{{url}}/facultades/create"
 method: POST
 body:
   type: json
-  content: "{\n    \"nombre\": \"Facultad de Derecho\"\n}"
+  content: |-
+    {
+        "nombre": "Facultad de Ciencias de la Salud"
+    }
 order: 3000

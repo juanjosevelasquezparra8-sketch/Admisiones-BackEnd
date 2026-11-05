@@ -1,19 +1,20 @@
 import { Router } from "express";
 
 import {
-    listarProgramas
+    listarProgramas,
+    obtenerProgramaPorId,
+    crearPrograma,
+    actualizarPrograma,
+    eliminarPrograma
 } from "./programas.controller.js";
 
 const router = Router();
 
 
 router.get("/show/", listarProgramas);
+router.get("/info/:id", obtenerProgramaPorId);
+router.post("/create/", crearPrograma);
+router.put("/update/:id", actualizarPrograma);
+router.delete("/delete/:id", eliminarPrograma);
 
-
-
-/* router.get("/info/:id", obtenerFacultadPorId);
-router.post("/create/", crearFacultad);
-router.put("/update/:id", actualizarFacultad);
-router.delete("/delete/:id", eliminarFacultad);
- */
 export default router;
