@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{url}}/estudiantes/delete/PEGA_AQUI_EL_ID"
+method: DELETE
+order: 5000

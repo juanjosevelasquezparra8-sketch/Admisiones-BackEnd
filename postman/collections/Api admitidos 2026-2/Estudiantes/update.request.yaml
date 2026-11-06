@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{url}}/estudiantes/update/PEGA_AQUI_EL_ID"
+method: PUT
+body:
+  type: json
+  content: "{\n    \"tipoDocumento\": \"CC\",\n    \"numeroDocumento\": \"1088123456\",\n    \"nombres\": \"Juan José\",\n    \"apellidos\": \"Velásquez Parra\",\n    \"email\": \"juanjose.velasquez@ucp.edu.co\",\n    \"telefono\": \"3109876543\"\n}"
+order: 4000

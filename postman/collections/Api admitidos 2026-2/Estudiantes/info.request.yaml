@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{url}}/estudiantes/info/PEGA_AQUI_EL_ID"
+method: GET
+order: 2000

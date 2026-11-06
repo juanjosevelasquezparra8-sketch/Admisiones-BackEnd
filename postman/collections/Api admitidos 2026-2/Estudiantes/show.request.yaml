@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{url}}/estudiantes/show"
+method: GET
+order: 1000
