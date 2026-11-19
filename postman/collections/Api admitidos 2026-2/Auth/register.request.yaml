@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{url}}/auth/register"
+method: POST
+body:
+  type: json
+  content: "{\n    \"nombre\": \"Juan José Velásquez\",\n    \"email\": \"juan@admitidos.com\",\n    \"password\": \"Admitidos2026\"\n}"
+order: 1000

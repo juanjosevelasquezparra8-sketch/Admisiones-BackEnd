@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{url}}/auth/login"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "email": "juan@admitidos.com",
+        "password": "Admitidos2026"
+    }
+scripts:
+  - type: afterResponse
+    code: "// si el login sale bien, guarda el token en el environment para usarlo en las demas peticiones\r
+
+      if (pm.response.code === 200) { pm.environment.set(\"token\", pm.response.json().data.token); }"
+    language: text/javascript
+order: 2000

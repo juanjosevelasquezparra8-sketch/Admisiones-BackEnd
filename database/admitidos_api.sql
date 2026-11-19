@@ -1,7 +1,7 @@
 -- Tablas de la base de datos admitidos_api
--- Pegar todo esto en phpMyAdmin > admitidos_api > pestaña SQL > Continuar
 
--- Tabla de facultades (la que ya usa tu codigo)
+
+-- Tabla de facultades 
 CREATE TABLE IF NOT EXISTS facultades (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL UNIQUE,
@@ -9,8 +9,7 @@ CREATE TABLE IF NOT EXISTS facultades (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Tabla de programas (la siguiente que vas a necesitar)
--- cada programa pertenece a una facultad (facultad_id)
+-- Tabla de programas 
 CREATE TABLE IF NOT EXISTS programas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     codigo VARCHAR(20) NOT NULL UNIQUE,
@@ -24,7 +23,6 @@ CREATE TABLE IF NOT EXISTS programas (
     FOREIGN KEY (facultad_id) REFERENCES facultades(id)
 );
 
--- Datos de prueba (los mismos que tenias en los arreglos)
 INSERT INTO facultades (nombre) VALUES
     ('Facultad de Ingeniería'),
     ('Facultad de Ciencias Sociales'),
